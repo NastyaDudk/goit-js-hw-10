@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/flatpickr/dist/flatpickr.css">
+
+    
+
+  <script type="module" crossorigin src="/goit-js-hw-10/commonHelpers.js"></script>
+  <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-ec808ebb.js">
+  <link rel="stylesheet" href="/goit-js-hw-10/assets/1-timer-a9041077.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" id="datetime-picker" />
+        <button type="button" class="button-click" id="myButton" disabled data-start>Start</button>
+
+        <div class="timer">
+            <div class="field">
+                <span id="days" class="value" data-days>00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="field">
+                <span id="hours" class="value" data-hours>00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="field">
+                <span id="minutes" class="value" data-minutes>00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="field">
+                <span id="seconds" class="value" data-seconds>00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="/flatpickr/dist/flatpickr.js"></script>
+
+    
+
+</body>
+
+</html>
