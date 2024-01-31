@@ -1,3 +1,8 @@
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const inputDateRef = document.querySelector('#datetime-picker');
 const btnStartRef = document.querySelector('[data-start]');
 const timerValueRef = document.querySelectorAll('.value');
