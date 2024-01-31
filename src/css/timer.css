@@ -60,7 +60,11 @@ body {
   background-color: #6c8cff;
 }
 
-.button-click.disabled {
+.button-disabled {
+  background-color: #cfcfcf;
+}
+
+.button-disabled:hover {
   background-color: #cfcfcf;
 }
 

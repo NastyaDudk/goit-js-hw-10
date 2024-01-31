@@ -18,8 +18,10 @@ const options = {
   onClose(selectedDates) {
     if (selectedDates[0].getTime() > Date.now()) {
       btnStartRef.disabled = false;
+      btnStartRef.classList.remove('button-disabled');
     } else {
       btnStartRef.disabled = true;
+      btnStartRef.classList.add('button-disabled');
       iziToast.error({
         position: 'topRight',
         messageColor: 'brown',
