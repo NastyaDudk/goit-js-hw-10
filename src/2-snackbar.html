@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <link rel="stylesheet" href="../izitoast/dist/css/iziToast.css">
+    <link rel="stylesheet" href="./css/snack.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <form class="form">
+            <label>
+                Delay (ms)
+                <input type="number" class="input" name="delay" required />
+            </label>
+
+            <fieldset class="fieldset">
+                <legend>State</legend>
+                <label class="label">
+                    <input class="fulfilled" type="radio" name="state" value="fulfilled" required />
+                    Fulfilled
+                </label>
+                <label>
+                    <input class="raddio" type="radio" name="state" value="rejected" required />
+                    Rejected
+                </label>
+            </fieldset>
+
+            <button class="button" type="submit">Create notification</button>
+        </form>
+
+        <script src="../izitoast/dist/js/iziToast.min.js"></script>
+        <script src="./js/2-snackbar.js" type="module"></script>
+    </div>
+</body>
+
+</html>

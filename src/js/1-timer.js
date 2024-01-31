@@ -1,0 +1,71 @@
+const inputDateRef = document.querySelector('#datetime-picker');
+const btnStartRef = document.querySelector('[data-start]');
+const timerValueRef = document.querySelectorAll('.value');
+
+btnStartRef.disabled = true;
+btnStartRef.addEventListener('click', onStartsCountdownTimer);
+
+const [days, hours, minutes, seconds] = timerValueRef;
+let userSelectedDate = '';
+
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  enableSeconds: true,
+  dateFormat: 'd.m.Y H:i',
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0].getTime() > Date.now()) {
+      btnStartRef.disabled = false;
+    } else {
+      btnStartRef.disabled = true;
+      iziToast.error({
+        position: 'topRight',
+        messageColor: 'brown',
+        message: 'Please choose a date in the future',
+        timeout: 3000,
+      });
+    }
+    userSelectedDate = selectedDates[0].getTime();
+  },
+};
+
+flatpickr(inputDateRef, options);
+
+function onStartsCountdownTimer() {
+  btnStartRef.disabled = true;
+  inputDateRef.disabled = true;
+
+  const intervalId = setInterval(() => {
+    const dateDifference = userSelectedDate - Date.now();
+
+    days.textContent = addLeadingZero(convertMs(dateDifference).days);
+    hours.textContent = addLeadingZero(convertMs(dateDifference).hours);
+    minutes.textContent = addLeadingZero(convertMs(dateDifference).minutes);
+    seconds.textContent = addLeadingZero(convertMs(dateDifference).seconds);
+
+    if (dateDifference < 1000) {
+      clearInterval(intervalId);
+      inputDateRef.disabled = false;
+    }
+  }, 1000);
+}
+
+function convertMs(ms) {
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  const days = Math.floor(ms / day);
+  const hours = Math.floor((ms % day) / hour);
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+
+  return { days, hours, minutes, seconds };
+}
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
