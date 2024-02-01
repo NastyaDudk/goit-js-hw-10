@@ -47,12 +47,16 @@ function onStartsCountdownTimer() {
   const intervalId = setInterval(() => {
     const dateDifference = userSelectedDate - Date.now();
 
-    days.textContent = addLeadingZero(convertMs(dateDifference).days);
-    hours.textContent = addLeadingZero(convertMs(dateDifference).hours);
-    minutes.textContent = addLeadingZero(convertMs(dateDifference).minutes);
-    seconds.textContent = addLeadingZero(convertMs(dateDifference).seconds);
-
-    if (dateDifference < 1000) {
+    if (dateDifference >= 0) {
+      days.textContent = addLeadingZero(convertMs(dateDifference).days);
+      hours.textContent = addLeadingZero(convertMs(dateDifference).hours);
+      minutes.textContent = addLeadingZero(convertMs(dateDifference).minutes);
+      seconds.textContent = addLeadingZero(convertMs(dateDifference).seconds);
+    } else {
+      days.textContent = '00';
+      hours.textContent = '00';
+      minutes.textContent = '00';
+      seconds.textContent = '00';
       clearInterval(intervalId);
       inputDateRef.disabled = false;
     }

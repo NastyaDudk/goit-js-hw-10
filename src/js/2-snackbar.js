@@ -1,12 +1,13 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+const delayInput = document.querySelector('input[name="delay"]');
+const stateRadioButtons = document.querySelectorAll('input[name="state"]');
+
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const delayInput = document.querySelector('input[name="delay"]');
-    const stateRadioButtons = document.querySelectorAll('input[name="state"]');
     const delay = parseInt(delayInput.value, 10);
 
     const selectedState = Array.from(stateRadioButtons).find(
@@ -21,21 +22,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    promise.then(
-      result => {
+    promise
+      .then(result => {
         iziToast.success({
           title: 'Fulfilled Promise',
           message: `✅ Fulfilled promise in ${result}ms`,
           position: 'topCenter',
         });
-      },
-      error => {
+      })
+      .catch(error => {
         iziToast.error({
           title: 'Rejected Promise',
           message: `❌ Rejected promise in ${error}ms`,
           position: 'topCenter',
         });
-      }
-    );
+      });
   });
 });
