@@ -15,11 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
     ).value;
 
     const promise = new Promise((resolve, reject) => {
-      if (selectedState === 'fulfilled') {
-        setTimeout(() => resolve(delay), delay);
-      } else {
-        setTimeout(() => reject(delay), delay);
-      }
+      setTimeout(() => {
+        if (selectedState === 'fulfilled') {
+          resolve(delay);
+        } else {
+          reject(delay);
+        }
+      }, delay);
     });
 
     promise
